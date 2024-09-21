@@ -1,8 +1,12 @@
 import { IoMdContact } from "react-icons/io";
 import { MdPhoneEnabled } from "react-icons/md";
 import css from "./Contact.module.css";
+import { useDispatch } from "react-redux";
+import { deleteContact } from "../../redux/contactsSlice";
 
-export default function Contact({ contact, onRemove }) {
+export default function Contact({ contact }) {
+  const dispatch = useDispatch();
+
   return (
     <li className={css.card}>
       <div>
@@ -18,7 +22,7 @@ export default function Contact({ contact, onRemove }) {
       <button
         type="button"
         onClick={() => {
-          onRemove(contact.id);
+          dispatch(deleteContact(contact.id));
         }}
       >
         Delete
